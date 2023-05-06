@@ -1,19 +1,21 @@
+/* Center text, make header bold & add a background gradient */
 h1 {
     color:white;
     text-align: center;
-    background: rgb(2,0,36);
     background: linear-gradient(59deg, rgba(2,0,36,1) 0%, rgba(12,12,195,1) 0%, rgba(0,212,255,1) 100%);
     padding: 3rem 0rem;
     margin-bottom: 5rem;
     font-weight: bold;
 }
 
-.footer-1 {
+/* Add margin and make text bold */
+#footerTask {
     margin-top: 7rem;
     font-weight: 700;
 }
 
-.formText, 
+/* Make text weight medium */
+.formTask, 
 .formButton {
     font-weight: 500;
 }
