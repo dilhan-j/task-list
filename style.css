@@ -15,7 +15,7 @@ h1 {
 }
 
 /* Make text weight medium */
-.formTask, 
+.formMain, 
 .formButton {
     font-weight: 500;
 }

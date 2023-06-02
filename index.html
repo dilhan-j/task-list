@@ -18,34 +18,32 @@
       <div class="row">
         <div class="col">
           <!-- <h1 class="text-center py-5 bg-primary text-white mx=0"><strong>TASK PLANNER</strong></h1> -->
-          <form class="formTask py-5 px-5 bg-primary bg-gradient rounded text-white">
+          <form id="formTask" class="formMain py-5 px-5 bg-primary bg-gradient rounded text-white">
             <div class="mb-3">
-              <label for="taskName" class="form-label">Task Name</label>
+              <label for="taskName" class="form-field">Task Name</label>
               <input type="text" class="form-control" name="taskName" id="taskName" required  minlength="8">
             </div>
             <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <input type="text" class="form-control py-4" name="description" id="description" required maxlength="45" minlength="15">
+              <label for="description" class="form-field">Description</label>
+              <textarea cols="30" rows="3" class="form-control py-4" name="description" id="description" required minlength="15"></textarea>
             </div>
             <div class="mb-3">
-              <label for="assignTo" class="form-label">Assign To</label>
-              <input type="text" class="form-control" name="assignTo" id="assignTo" required maxlength="45" minlength="8">
+              <label for="assignTo" class="form-field">Assign To</label>
+              <input type="text" class="form-control" name="assignTo" id="assignTo" required minlength="8">
             </div>
             <div class="mb-3 px-0 form-check">
-              <label class="form-label" for="dueDate">Due Date</label>
-              <input type="date" class="form-control" name="dueDate" id="dueDate">
-              
+              <label class="form-field" for="dueDate">Due Date</label>
+              <input type="date" class="form-control" name="dueDate" id="dueDate" required>
             </div>
-            <label class="form-label" for="status">Status</label>
-            <select class="form-select" name="status" id="status">
-              <option selected>Select Option</option>
-              <option value="todo">TODO</option>
+            <label class="form-field" for="status">Status</label>
+            <select class="form-select" name="status" id="status" required>
+              <option selected value="todo">TODO</option>
               <option value="inProgress">IN PROGRESS</option>
               <option value="review">REVIEW</option>
               <option value="done">DONE</option>
             </select>
             <br>
-            <button onclick="buttonClick()" type="submit" class="formButton btn btn-success">Add Task</button>
+            <button type="submit" class="formButton btn btn-success" id="submitForm">Add Task</button>
           </form>
         </div>
       </div>
