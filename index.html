@@ -13,116 +13,68 @@
     <header>
       <h1>TASK PLANNER</h1>
     </header>
-    <!-- Form for Task Planner -->
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <!-- <h1 class="text-center py-5 bg-primary text-white mx=0"><strong>TASK PLANNER</strong></h1> -->
-          <form id="formTask" class="formMain py-5 px-5 bg-primary bg-gradient rounded text-white">
-            <div class="mb-3">
+    <div class="app">
+      <h4 class="mb-3">Task Planner</h4>
+  
+  
+      <div id="addNew" data-bs-toggle="modal" data-bs-target="#taskForm">
+        <span>Add New Task</span>
+        <i class="fas fa-plus"></i>
+      </div>
+  
+      <!-- Modal -->
+      <form class="modal fade " id="taskForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bg-primary bg-gradient rounded text-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
               <label for="taskName" class="form-field">Task Name</label>
-              <input type="text" class="form-control" name="taskName" id="taskName" required  minlength="8">
-            </div>
-            <div class="mb-3">
+              <input type="text" class="form-control" name="taskName" id="taskName" required>
+              <!-- <input type="text" class="form-control" name="taskName" id="taskName" required  minlength="8"> -->
+              <!-- <p>Task Name</p>
+              <input type="text" class="form-control" name="" id="taskName"> -->
+              <div id="checkField"></div>
+              <br>
+              <!-- <p>Description</p>
+              <textarea name="" class="form-control" id="description" cols="30" rows="5"></textarea>
+              <br> -->
               <label for="description" class="form-field">Description</label>
-              <textarea cols="30" rows="3" class="form-control py-4" name="description" id="description" required minlength="15"></textarea>
-            </div>
-            <div class="mb-3">
+              <textarea cols="30" rows="3" class="form-control" name="description" id="description" required></textarea>
+              <!-- <textarea cols="30" rows="5" class="form-control py-4" name="description" id="description" required minlength="15"></textarea> -->
+              <br>
               <label for="assignTo" class="form-field">Assign To</label>
-              <input type="text" class="form-control" name="assignTo" id="assignTo" required minlength="8">
-            </div>
-            <div class="mb-3 px-0 form-check">
+              <input type="text" class="form-control" name="assignTo" id="assignTo" required>
+                <!-- <input type="text" class="form-control" name="assignTo" id="assignTo" required minlength="8"> -->
+              <!-- <p>Due Date</p>
+              <input type="date" class="form-control" name="" id="dueDate"> -->
+              <br>
               <label class="form-field" for="dueDate">Due Date</label>
               <input type="date" class="form-control" name="dueDate" id="dueDate" required>
+              <br>
+              <label class="form-field" for="status">Status</label>
+              <select class="form-select" name="status" id="status" required>
+                <option selected value="todo">TODO</option>
+                <option value="inProgress">IN PROGRESS</option>
+                <option value="review">REVIEW</option>
+                <option value="done">DONE</option>
+              </select>
             </div>
-            <label class="form-field" for="status">Status</label>
-            <select class="form-select" name="status" id="status" required>
-              <option selected value="todo">TODO</option>
-              <option value="inProgress">IN PROGRESS</option>
-              <option value="review">REVIEW</option>
-              <option value="done">DONE</option>
-            </select>
-            <br>
-            <button type="submit" class="formButton btn btn-success" id="submitForm">Add Task</button>
-          </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" id="submitCard" class="btn btn btn-success">Add Task</button>
+            </div>
+          </div>
         </div>
+      </form>
+  
+      <h5 class="text-center my-3">Tasks</h5>
+  
+      <div id="cards">
+  
       </div>
-      <!-- TASK LIST -->
-      <div class="container">
-      <div class="row py-3 mt-5" id="cards">
-
-      </div>
-      <div class="row py-3 mt-5">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card bg-success bg-gradient">
-            <div class="card-body">
-              <h5 class="card-title">Name: Task 1</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card bg-danger">
-            <div class="card-body">
-              <h5 class="card-title">Name: Task 2</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card bg-warning">
-            <div class="card-body">
-              <h5 class="card-title">Name: Task 3</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-sm-2">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card bg-info">
-            <div class="card-body">
-              <h5 class="card-title">Name: Task 4</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card bg-secondary">
-            <div class="card-body text-white">
-              <h5 class="card-title">Name: Task 5</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card bg-dark">
-            <div class="card-body text-white">
-              <h5 class="card-title">Name: Task 6</h5>
-              <p class="card-text">Description:</p>
-              <p class="card-text">Assigned To:</p>
-              <p class="card-text">Due Date:</p>
-              <p class="card-text">Status:</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
     <footer id="footerTask">
     <p class="text-center mb-0 py-3 bg-primary text-white">&copy; Copyright 2023 - Priscilla, Steven &amp; Dilhan</p>
