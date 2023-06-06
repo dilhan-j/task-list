@@ -10,14 +10,10 @@ h1 {
     font-weight: bold;
 }
 
-/* Add margin and make text bold */
 #footerTask {
-    margin-top: 6rem;
-    font-weight: 700;
-}
-
-/* Make text weight medium */
-.formMain, 
-.formButton {
-    font-weight: 500;
-}
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: auto 0;
+  }
