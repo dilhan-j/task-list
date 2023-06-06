@@ -1,14 +1,19 @@
 /* CSS for Task Planner Project */
 
-/* Center text, make header bold & add a background gradient */
-h1 {
+/* Set global font */
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+  }
+  
+  /* Center text, make header bold & add a background gradient */
+  h1 {
     color:white;
     text-align: center;
     background: linear-gradient(59deg, rgba(2,0,36,1) 0%, rgba(12,12,195,1) 0%, rgba(0,212,255,1) 100%);
     padding: 3rem 0rem;
     margin-bottom: 5rem;
     font-weight: bold;
-}
+  }
 
 #footerTask {
     position: fixed;
