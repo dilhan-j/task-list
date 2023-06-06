@@ -1,5 +1,3 @@
-// Javascript for Task Planner Project
-
 // Create TaskPlanner class and assign values from input form
 
 class TaskPlanner {
@@ -13,17 +11,60 @@ class TaskPlanner {
     this.status = document.getElementById("status");
     this.taskCards = document.getElementById("taskCards");
     this.submitCard = document.getElementById("submitCard");
-
     
-//// <------------------------------
+    // Store data
+    this.taskData = [{}];
+    
+    // Initialize the task planner
+    this.initialize();
+  }
 
+  initialize() {
+    this.taskForm.addEventListener("submit", (element) => {
+      element.preventDefault();
+      this.checkForm();
+    });
 
+    // "Add" button click event listener
+    this.submitCard.addEventListener("click", () => {
+      this.submitCard.setAttribute("data-bs-dismiss", "");
+    });
+    
+    // Load the data from local storage
+    this.loadData();
+  }
+  
+  // Check if "taskName" is valid and run "inputData"
+  checkForm() {
+    if (this.taskName.value === "") {
+      console.log("taskName field is empty");
+      this.checkField.innerHTML = "The Task Name can't be empty";
+    } else {
+      console.log("taskName is valid");
+      this.checkField.innerHTML = "";
+      this.inputData();
+      this.submitCard.setAttribute("data-bs-dismiss", "modal");
+      this.submitCard.click();
+    }
+  }
 
-
-
-
-//// <------------------------------
-
+  // Store data as objects
+  inputData() {
+    this.taskData.push({
+      name: this.taskName.value,
+      description: this.description.value,
+      assign: this.assignTo.value,
+      status: this.status.value,
+      date: this.dueDate.value,
+    });
+    
+    // Save the data to local storage
+    localStorage.setItem("taskData", JSON.stringify(this.taskData));
+    console.log('Store data');
+    console.log(this.taskData);
+    this.createCard();
+    this.clearForm();
+  }
 
   // Create a new card and output HTML to page
   createCard() {
