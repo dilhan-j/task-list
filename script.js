@@ -69,22 +69,24 @@ class TaskPlanner {
   // Create a new card and output HTML to page
   createCard() {
     this.taskCards.innerHTML = "";
-    this.taskData.forEach((a, b) => {
+    this.taskData.forEach((taskDisp, taskId) => {
       const taskElement = document.createElement("div");
-      taskElement.id = b;
+      taskElement.id = taskId;
+ //     const markDoneBtn = taskData.status !== "Done" ? `<button onClick="taskPlanner.markDone(${taskId})" class="btn btn-primary">Mark as Done</button>` : "";
       const taskContent = `
       <div class="col pt-4 px-3">
       <div class="card text-white bg-success">
-        <div class="card-header">${b + 1}</div>  
+        <div class="card-header">ID: ${taskId + 1}</div>  
           <div class="card-body">
-            <p class="fw-bold">Task Name: ${a.name}</p>
-            <p class="card-text">Description: ${a.description}</p>
-            <p class="card-text">Assigned To: ${a.assign}</p>
-            <p class="card-text">Due Date: ${a.date}</p>
-            <p class="card-text">Status: ${a.status}</p>
+            <p class="fw-bold">Task Name: ${taskDisp.name}</p>
+            <p class="card-text">Description: ${taskDisp.description}</p>
+            <p class="card-text">Assigned To: ${taskDisp.assign}</p>
+            <p class="card-text">Due Date: ${taskDisp.date}</p>
+            <p class="card-text">Status: ${taskDisp.status}</p>
             <span class="card-text cardOptions">
-              <button onClick = "taskPlanner.editCard(this)" data-bs-toggle="modal" data-bs-target="#taskForm" class="fa-regular fa-pen-to-square btn btn-light btn-sm"></button>
-              <button onClick = "taskPlanner.deleteCard(this); taskPlanner.createCard()" class="fa-regular fa-trash-can btn btn-light btn-sm"></button>
+              <button title="Edit Task" onClick = "taskPlanner.editCard(this)" data-bs-toggle="modal" data-bs-target="#taskForm" class="fa-regular fa-pen-to-square btn btn-light btn-sm"><span class="cardBtn">&nbsp;Edit</span></button>
+              <button title="Delete Task" onClick = "taskPlanner.deleteCard(this); taskPlanner.createCard()" class="fa-regular fa-trash-can btn btn-light btn-sm"><span class="cardBtn">&nbsp;Delete</span></button>
+              <button title="Mark as Done" onClick = "taskPlanner.markDone(${taskId})" class="fa-regular fa-square-check btn btn-light btn-sm"><span class="cardBtn">&nbsp;Done</span></button>
             </span>
           </div>
          </div>
@@ -95,14 +97,16 @@ class TaskPlanner {
     });
   }
 
+//<button title="Mark as Done" onClick = "taskPlanner.markDone(${taskId})" class="fa-regular fa-square-check btn btn-light btn-sm"></button>
+
   
   deleteCard(element) {
     const taskElement = element.parentElement.parentElement;
-    const taskId = parseInt(taskElement.id);
+    const taskIdDel = parseInt(taskElement.id);
     // Remove the task element from DOM
     taskElement.remove();
      // Remove task data from array
-    this.taskData.splice(taskId, 1);
+    this.taskData.splice(taskIdDel, 1);
     // Save the updated data to the local storage
     localStorage.setItem("taskData", JSON.stringify(this.taskData));
     console.log('Deleted card');
@@ -125,8 +129,15 @@ class TaskPlanner {
       statusOptions[i].selected = true;
       break;
     }
-}
+  }
     this.deleteCard(element);
+  }
+
+  markDone(taskId) {
+    // Change status of task to "Done" and save data to local storage
+    this.taskData[taskId].status = "Done";
+    localStorage.setItem("taskData", JSON.stringify(this.taskData));
+    this.createCard();
   }
   
   // Reset the form to default values

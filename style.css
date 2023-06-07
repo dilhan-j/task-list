@@ -15,10 +15,24 @@
     font-weight: bold;
   }
 
-#footerTask {
+/* #footerTask {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     margin: auto 0;
+  } */
+  
+
+  body{
+    min-height: 100vh;
+  }
+  /* Add margin and make text bold */
+  #footerTask {
+    position: sticky;
+    top: 100%;
+  }
+
+  .cardBtn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
