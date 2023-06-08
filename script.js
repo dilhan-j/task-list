@@ -88,7 +88,7 @@ class TaskPlanner {
       taskElement.id = id;
       const taskContent = `
         <div class="col pt-4 px-3">
-          <div class="card text-white bg-success">
+          <div class="card text-white bg-primary">
             <div class="card-body">
               <p class="fw-bold">Task Name: ${task.name}</p>
               <p class="card-text">Description: ${task.description}</p>
@@ -147,12 +147,12 @@ class TaskPlanner {
   this.deleteCard(element);
 }
 
-  markDone(id) {
-    // Change status of task to "Done" and save data to local storage
-    this.taskData[id].status = "Done";
-    localStorage.setItem("taskData", JSON.stringify(this.taskData));
-    this.createCard();
-  }
+markDone(id) {
+  // Change status of task to "Done" and save data to local storage
+  this.taskData[id].status = "Done";
+  localStorage.setItem("taskData", JSON.stringify(this.taskData));
+  this.createCard();
+}
     
   // Reset the form to default values
   clearForm() {
