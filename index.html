@@ -37,20 +37,20 @@
             </div>
             <div class="modal-body">
             <label for="taskName" class="form-field">Task Name</label>
-            <input type="text" class="form-control" name="taskName" id="taskName" required minlength="8">
-            <div id="checkField"></div>
+            <input type="text" class="form-control" name="taskName" id="taskName">
+            <div class="checkField" id="checkNameField"></div>
             <br>
             <label for="description" class="form-field">Description</label>
-            <textarea cols="30" rows="3" class="form-control" name="description" id="description" required minlength="15"></textarea>
+            <textarea cols="30" rows="3" class="form-control" name="description" id="description"></textarea>
             <br>
             <label for="assignTo" class="form-field">Assign To</label>
-            <input type="text" class="form-control" name="assignTo" id="assignTo" required minlength="8">
+            <input type="text" class="form-control" name="assignTo" id="assignTo">
             <br>
             <label class="form-field" for="dueDate">Due Date</label>
-            <input type="date" class="form-control" name="dueDate" id="dueDate" required>
+            <input type="date" class="form-control" name="dueDate" id="dueDate">
             <br>
             <label class="form-field" for="status">Status</label>
-            <select class="form-select" name="status" id="status" required>
+            <select class="form-select" name="status" id="status">
               <option selected value="Todo">TODO</option>
               <option value="In-Progress">IN PROGRESS</option>
               <option value="Review">REVIEW</option>
@@ -58,7 +58,7 @@
             </select>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
             <button type="submit" id="submitCard" class="btn btn btn-success">Add Task</button>
           </div>
         </div>
@@ -66,7 +66,7 @@
     </form>
 
     <!-- Inject HTML code for task cards here -->
-    <div id="taskCards" class="row row-cols-1 row-cols-md-3 g-4"></div>
+    <div id="taskCards" class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4"></div>
 
   </div>
 

@@ -13,19 +13,11 @@
     padding: 3rem 0rem;
     margin-bottom: 5rem;
     font-weight: bold;
-  }
-
-/* #footerTask {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    margin: auto 0;
-  } */
-  
+  } 
 
   body{
     min-height: 100vh;
+  
   }
   /* Add margin and make text bold */
   #footerTask {
@@ -33,6 +25,17 @@
     top: 100%;
   }
 
+/* Hide button if status is set the done */
+  button.checkDone.done:not([disabled]) {
+    display: none;
+  }
+
   .cardBtn {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .checkField {
+    color: red;
+    font-weight: bold;
+    text-shadow: 1px 1px 7px white;
   }
