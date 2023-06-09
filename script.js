@@ -18,9 +18,13 @@ class TaskPlanner {
     this.taskName = document.getElementById("taskName");
     this.checkNameField = document.getElementById("checkNameField");
     this.description = document.getElementById("description");
+    this.checkdescField = document.getElementById("checkdescField");
     this.assignTo = document.getElementById("assignTo");
+    this.checkAssignField = document.getElementById("checkAssignField");
     this.dueDate = document.getElementById("dueDate");
+    this.checkDateField = document.getElementById("checkDateField");
     this.status = document.getElementById("status");
+    this.checkStatusField = document.getElementById("checkStatusField");
     this.taskCards = document.getElementById("taskCards");
     this.submitCard = document.getElementById("submitCard");
     // Store data
@@ -45,41 +49,54 @@ class TaskPlanner {
     // Load the data from local storage
     this.loadData();
   }
+
   
   checkForm() {
     let isFormValid = true;
-    
+    this.checkNameField.innerHTML = "";
+    this.checkdescField.innerHTML = "";
+    this.checkAssignField.innerHTML = "";
+    this.checkDateField.innerHTML ="";
+    this.checkStatusField.innerHTML = ""; 
+
     if (this.taskName.value === "" || this.taskName.value.length < 8) {
       console.log("Invalid taskName");
-      this.checkField.innerHTML = "The Task Name should not be empty and be more than 8 characters";
-      isValid = false;
+      this.checkNameField.innerHTML = "The Task Name should not be empty and be more than 8 characters";
+      isFormValid = false;
+
     } else if (this.description.value === "" || this.description.value.length < 15) {
+      this.checkNameField.innerHTML = "";
       console.log("Invalid description");
-      this.checkField.innerHTML = "The Description should not be empty and more be than 15 characters";
-      isValid = false;
-    } else if (this.assignTo.value === "" || this.assignTo.value.length < 15) {
+      this.checkdescField.innerHTML = "The Description should not be empty and more be than 15 characters";
+      isFormValid = false;
+
+    } else if (this.assignTo.value === "" || this.assignTo.value.length < 8) {
+      this.checkdescField.innerHTML = "";
       console.log("Invalid assignTo");
-      this.checkField.innerHTML = "The Assigned To field should not be empty and be more than 15 characters";
-      isValid = false;
+      this.checkAssignField.innerHTML = "The Assigned To field should not be empty and be more than 8 characters";
+      isFormValid = false;
+
     } else if (this.dueDate.value === "") {
+      this.checkAssignField.innerHTML = "";
       console.log("Invalid dueDate");
-      this.checkField.innerHTML = "Please select a Due Date";
-      isValid = false;
+      this.checkDateField.innerHTML = "Please select a Due Date";
+      isFormValid = false;
+
     } else if (this.status.value === "") {
+      this.checkDateField.innerHTML ="";
       console.log("Invalid status");
-      this.checkField.innerHTML = "Please select a Status";
-      isValid = false;
+      this.checkStatusField.innerHTML = "Please select a Status";
+      isFormValid = false;
+
     } else {
       console.log("Form is valid");
-      this.checkField.innerHTML = "";
-    }
-    
-    if (isFormValid) {
+      this.checkStatusField.innerHTML = "";
       this.inputData();
       this.submitCard.setAttribute("data-bs-dismiss", "modal");
       this.submitCard.click();
     }
   }
+
 
   // Gather user input
   inputData() {
@@ -150,6 +167,11 @@ class TaskPlanner {
   }
   
   editCard(element) {
+   this.checkNameField.innerHTML = "";
+   this.checkdescField.innerHTML = "";
+   this.checkAssignField.innerHTML = "";
+   this.checkDateField.innerHTML ="";
+   this.checkStatusField.innerHTML = ""; 
    let selectedTask = element.parentElement.parentElement;
    // Form field pre-filling wih data
    this.taskName.value = selectedTask.children[0].innerHTML.replace("Task Name: ", "");
