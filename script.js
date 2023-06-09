@@ -46,14 +46,35 @@ class TaskPlanner {
     this.loadData();
   }
   
-  // Check if "taskName" is valid and run "inputData"
   checkForm() {
-    if (this.taskName.value === "") {
-      console.log("taskName field is empty");
-      this.checkNameField.innerHTML = "The Task Name can't be empty";
+    let isFormValid = true;
+    
+    if (this.taskName.value === "" || this.taskName.value.length < 8) {
+      console.log("Invalid taskName");
+      this.checkField.innerHTML = "The Task Name should not be empty and be more than 8 characters";
+      isValid = false;
+    } else if (this.description.value === "" || this.description.value.length < 15) {
+      console.log("Invalid description");
+      this.checkField.innerHTML = "The Description should not be empty and more be than 15 characters";
+      isValid = false;
+    } else if (this.assignTo.value === "" || this.assignTo.value.length < 15) {
+      console.log("Invalid assignTo");
+      this.checkField.innerHTML = "The Assigned To field should not be empty and be more than 15 characters";
+      isValid = false;
+    } else if (this.dueDate.value === "") {
+      console.log("Invalid dueDate");
+      this.checkField.innerHTML = "Please select a Due Date";
+      isValid = false;
+    } else if (this.status.value === "") {
+      console.log("Invalid status");
+      this.checkField.innerHTML = "Please select a Status";
+      isValid = false;
     } else {
-      console.log("taskName is valid");
-      this.checkNameField.innerHTML = "";
+      console.log("Form is valid");
+      this.checkField.innerHTML = "";
+    }
+    
+    if (isFormValid) {
       this.inputData();
       this.submitCard.setAttribute("data-bs-dismiss", "modal");
       this.submitCard.click();

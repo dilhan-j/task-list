@@ -42,12 +42,15 @@
             <br>
             <label for="description" class="form-field">Description</label>
             <textarea cols="30" rows="3" class="form-control" name="description" id="description"></textarea>
+            <div class="checkField" id="checkFielddescription"></div>
             <br>
             <label for="assignTo" class="form-field">Assign To</label>
             <input type="text" class="form-control" name="assignTo" id="assignTo">
+            <div class="checkField" id="checkassignToField"></div>
             <br>
             <label class="form-field" for="dueDate">Due Date</label>
             <input type="date" class="form-control" name="dueDate" id="dueDate">
+            <div class="checkField" id="checkdueDateField"></div>
             <br>
             <label class="form-field" for="status">Status</label>
             <select class="form-select" name="status" id="status">
@@ -56,6 +59,7 @@
               <option value="Review">REVIEW</option>
               <option value="Done">DONE</option>
             </select>
+            <div class="checkField" id="checkstatusField"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
